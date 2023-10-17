@@ -1,31 +1,46 @@
-id = 0;
+
+window.addEventListener("load",function () {
+    checkStorage();
+})
 
 // cek Browser mampu localstorage. nyoba mengguankan ternary operator
-
 const checkStorage = () => {
-    (typeof(Storage) == undefined) ? (alert("Your Browser doest support for localStorage"), false) : true;
+    return (typeof(Storage) === undefined) ? (alert("Your Browser doesnt support for localStorage"), false) : true;
 }
 
 // console.log(checkStorage())
 
 // fungsi membuat object untuk berguna pada indexing di storage
-
-const generateObject = (title,author,year,isComplete) => {
-    return(
-        id++,
+ const generateObject = (title,author,year,isComplete) => {
+    return{
+        id : +new Date,
         title,
         author,
         year,
         isComplete
-    )
+    }
+    
 }
 
-const SaveData = () => {
+
+
+ const saveData = () => {
     localStorage.setItem(localBooksKey,parsed);
+    document.dispatchEvent(new Event('dataSaved'));
 }
 
-submitBook.addEventListener('submit', (event)=>{
-    event.preventDefault();
-    // logic add
-})
+const loadStorage = () => {
+    const serialData = localStorage.getItem(localBooksKey);
+
+    let data = JSON.parse(serialData);
+    
+    (data !== null) ? books = data : undefined; //jika tidak ada yang ingn dikembalikan saat false bisa di isi dengan null,"",undefined
+    document.dispatchEvent(new Event('dataLoaded'));
+    console.log("dosono")
+
+
+
+}
+
+
 

@@ -7,6 +7,7 @@ const localBooksKey = 'Local_Books';
 const iJudul = document.getElementById("inputBookTitle");
 const iAuthor = document.getElementById("inputBookAuthor");
 const iYear = document.getElementById("inputBookYear");
+const iCheck = document.getElementById("inputBookIsComplete");
 const submitBook = document.getElementById("inputBook");
 //  -----------------------------------
 
@@ -14,15 +15,15 @@ const submitBook = document.getElementById("inputBook");
 
 var books = [];
 var book;
-var id;
+const idBook = "bookId";
     
-const parsed = JSON.stringify(todos);  // merubah nilai array books kedalam bentuk json
+const parsed = JSON.stringify(books);  // merubah nilai array books kedalam bentuk json
 // --------------------------------
 
 // variabel untuk gunakan function membedakan sudah dan belum selesai
 
-const id_done = true;
-const id_undone = false;
+const id_done = document.getElementById("completeBookshelfList");
+const id_undone = document.getElementById("incompleteBookshelfList");
 
 
 
