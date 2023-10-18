@@ -1,14 +1,23 @@
 
-window.addEventListener("load",function () {
-    checkStorage();
-})
+const localBooksKey = 'Local_Books';
+let books = [];
+let book;
+
 
 // cek Browser mampu localstorage. nyoba mengguankan ternary operator
-const checkStorage = () => {
-    return (typeof(Storage) === undefined) ? (alert("Your Browser doesnt support for localStorage"), false) : true;
-}
+// const checkStorage = () => {
+//     return (typeof(Storage) === undefined) ? (alert("Your Browser doesnt support for localStorage"), false) : true;
+// }
 
-// console.log(checkStorage())
+const checkStorage = () => {
+    if (typeof Storage === "undefined") {
+        alert("Your Browser doesn't support localStorage");
+        return false;
+    }
+    return true;
+};
+
+
 
 // fungsi membuat object untuk berguna pada indexing di storage
  const generateObject = (title,author,year,isComplete) => {
@@ -22,9 +31,15 @@ const checkStorage = () => {
     
 }
 
+function updateStorage() {
+    if (checkStorage())
+        saveData();
 
+    console.log("updated")
+}
 
  const saveData = () => {
+    const parsed = JSON.stringify(books);
     localStorage.setItem(localBooksKey,parsed);
     document.dispatchEvent(new Event('dataSaved'));
 }
@@ -36,11 +51,30 @@ const loadStorage = () => {
     
     (data !== null) ? books = data : undefined; //jika tidak ada yang ingn dikembalikan saat false bisa di isi dengan null,"",undefined
     document.dispatchEvent(new Event('dataLoaded'));
-    console.log("dosono")
-
-
-
+    console.log("masuk ke load")
 }
+
+function findTodo(todoId) {
+    for (book of books) {
+        if (book.id === todoId)
+            return book;
+    }
+    return null;
+}
+
+function findIndex(todoId) {
+
+    let index = 0
+    for (book of books) {
+        if (book.id === todoId)
+            return index;
+
+        index++;
+    }
+
+    return -1;
+}
+
 
 
 
