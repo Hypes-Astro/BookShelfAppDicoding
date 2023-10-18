@@ -1,7 +1,4 @@
 
-const localBooksKey = 'Local_Books';
-let books = [];
-let book;
 
 
 // cek Browser mampu localstorage. nyoba mengguankan ternary operator
@@ -17,7 +14,7 @@ const checkStorage = () => {
     return true;
 };
 
-
+// console.log(checkStorage())
 
 // fungsi membuat object untuk berguna pada indexing di storage
  const generateObject = (title,author,year,isComplete) => {

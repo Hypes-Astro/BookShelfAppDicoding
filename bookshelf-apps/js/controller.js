@@ -1,22 +1,12 @@
-const id_done = document.getElementById("completeBookshelfList");
-const id_undone = document.getElementById("incompleteBookshelfList");
-const idBook = "bookId";
 
 let nomor = 0;
 const addBook = () => {
-    const iJudul = document.getElementById("inputBookTitle").value;
-    const iAuthor = document.getElementById("inputBookAuthor").value;
-    const iYear = document.getElementById("inputBookYear").value;
-    const iCheck = document.getElementById("inputBookIsComplete").checked;
-
-    const adding = makeBook(iJudul, iAuthor, iYear, iCheck, true);
-    
-    const bookObject = generateObject(iJudul, iAuthor, iYear, iCheck);
+    const adding = makeBook(iJudul.value, iAuthor.value, iYear.value, iCheck.checked, true);
+    const bookObject = generateObject(iJudul.value, iAuthor.value, iYear.value, iCheck.checked);
     
     adding[idBook] = bookObject.id;
     books.push(bookObject);
-
-    if (iCheck) {
+    if (iCheck.checked) {
         id_done.append(adding);
     } else {
         id_undone.append(adding);
