@@ -1,7 +1,4 @@
 // membuat inisialiasi awal suatu halaman. DOMContentLoaded
-
-
-
 window.addEventListener("DOMContentLoaded", function () {
     const bookSubmit = document.getElementById("bookSubmit"); // Menggunakan ID yang sesuai
 

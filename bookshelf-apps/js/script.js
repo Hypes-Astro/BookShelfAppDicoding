@@ -11,6 +11,12 @@ const checkStorage = () => {
         alert("Your Browser doesn't support localStorage");
         return false;
     }
+
+
+    if (books.length < 1) {
+        nomor = 0;
+    }
+
     return true;
 };
 
@@ -51,19 +57,19 @@ const loadStorage = () => {
     console.log("masuk ke load")
 }
 
-function findTodo(todoId) {
+function findBook(bookId) {
     for (book of books) {
-        if (book.id === todoId)
+        if (book.id === bookId)
             return book;
     }
     return null;
 }
 
-function findIndex(todoId) {
+function findIndex(bookId) {
 
     let index = 0
     for (book of books) {
-        if (book.id === todoId)
+        if (book.id === bookId)
             return index;
 
         index++;
