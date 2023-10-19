@@ -9,11 +9,11 @@ const addBook = () => {
 
     // revisi dari tim dicoding 
     const getYear = iYear.value;
-    const yearParse = +getYear;   // -> berikan operator + untuk konvert ke bilangan bulat
+    const yearParse = +getYear;   // -> berikan operator + untuk konvert ke bilangan bulat 
     // ------------------------  
 
-    const adding = makeBook(iJudul.value, iAuthor.value, getYear, iCheck.checked, true);
-    const bookObject = generateObject(iJudul.value, iAuthor.value, getYear, iCheck.checked);
+    const adding = makeBook(iJudul.value, iAuthor.value, yearParse, iCheck.checked, true);
+    const bookObject = generateObject(iJudul.value, iAuthor.value, yearParse, iCheck.checked);
     
     adding[idBook] = bookObject.id;
 
@@ -146,7 +146,7 @@ const addBookNotComplete = (taskElement) => {
     id_undone.append(newBooks);
     taskElement.remove();
     console.log("ini nOTaddbookcomplete");
-    alert(`Buku berhasil diubah (sudah dibaca).`)
+    alert(`Buku berhasil diubah (belum dibaca).`)
     updateStorage();
 }
 
