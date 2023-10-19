@@ -1,6 +1,3 @@
-
-
-
 // cek Browser mampu localstorage. nyoba mengguankan ternary operator
 // const checkStorage = () => {
 //     return (typeof(Storage) === undefined) ? (alert("Your Browser doesnt support for localStorage"), false) : true;

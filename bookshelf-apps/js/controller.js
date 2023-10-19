@@ -1,8 +1,19 @@
+// Cobalah untuk reset form ketika form selesai di submit, hal ini bertujuan agar user tidak bingung apakah form sudah di submit atau belum 
+
+const sudahSubmit = (judul) =>{
+    alert(`Buku berjudul ${judul} berhasil ditambahkan.`);
+}
 
 let nomor = 0;
 const addBook = () => {
-    const adding = makeBook(iJudul.value, iAuthor.value, iYear.value, iCheck.checked, true);
-    const bookObject = generateObject(iJudul.value, iAuthor.value, iYear.value, iCheck.checked);
+
+    // revisi dari tim dicoding 
+    const getYear = iYear.value;
+    const yearParse = +getYear;   // -> berikan operator + untuk konvert ke bilangan bulat
+    // ------------------------  
+
+    const adding = makeBook(iJudul.value, iAuthor.value, getYear, iCheck.checked, true);
+    const bookObject = generateObject(iJudul.value, iAuthor.value, getYear, iCheck.checked);
     
     adding[idBook] = bookObject.id;
 
@@ -14,7 +25,11 @@ const addBook = () => {
         id_undone.append(adding);
     }
 
+    console.log(typeof yearParse)
 
+    // revisi
+    sudahSubmit(iJudul.value)
+    // ----------------------
     updateStorage();
     
     
@@ -36,6 +51,7 @@ const undone = () => {
 const deleteButton = () => {
     return createButton('red', 'Hapus buku', function (event) {
         deletItems(event.target.parentElement.parentElement);
+        alert(`Buku berjudul berhasil dihapus.`)
     });
 }
 
@@ -86,6 +102,7 @@ const makeBook = (title,author,years,isComplete,selectText) => {
         );
     }
 
+    
     container.append(o_title, o_author, o_year);
     container.append(action);
 
@@ -105,6 +122,7 @@ const addBookComplete = (taskElement) => {
     book.isComplete = true;
     newBooks[idBook] = book.id;
     
+    alert(`Buku berhasil diubah (sudah dibaca).`)
 
     id_done.append(newBooks);
     taskElement.remove();
@@ -128,6 +146,7 @@ const addBookNotComplete = (taskElement) => {
     id_undone.append(newBooks);
     taskElement.remove();
     console.log("ini nOTaddbookcomplete");
+    alert(`Buku berhasil diubah (sudah dibaca).`)
     updateStorage();
 }
 

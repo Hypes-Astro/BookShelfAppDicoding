@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("dataSaved", ()=>{
-    console.log("Data tersimpan");
+    
 })
 
 

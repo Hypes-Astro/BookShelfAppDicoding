@@ -16,8 +16,7 @@ const submitBook = document.getElementById("inputBook");
 let books = [];
 let book;
 const idBook = "bookId";
-    
-  // merubah nilai array books kedalam bentuk json
+
 // --------------------------------
 
 // variabel untuk gunakan function membedakan sudah dan belum selesai
